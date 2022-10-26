@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Routing</title>
+</head>
+<body>
+  <div id="app">
+    <p>
+      <router-link to="/">Home</router-link>
+      <router-link to="/about">About</router-link>
+    </p>
+    <hr>
+    <router-view></router-view>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/vue@2.6.10/dist/vue.js"></script>
+  <script src="https://unpkg.com/vue-router@3.0.7/dist/vue-router.js"></script>
+  <script>
+    // Definisikan konfigurasi component
+    const Home = {template: "<h1>Halaman Home</h1>"}
+    const About = {template: "<h1>Halaman About</h1>"}
+
+    // Mapping route path dengan componentnya, dibaca dari atas ke bawah
+    const routes = [
+      {path: '/', component: Home, alias: '/home'},
+      {path: '/about', component: About},
+      {path: '*', redirect: '/'}
+    ];
+
+    // Register routing aplikasi kita pada objek dari class VueRouter
+    const router = new VueRouter({
+      routes // bentuk pendek dari `routes: routes`
+    });
+
+    // Register objek router pada objek Vue
+    let vm = new Vue({
+      el: "#app",
+      router,
+    });
+  </script>
+</body>
+</html>

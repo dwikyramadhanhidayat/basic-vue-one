@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    .card {
+      width: 200px;
+      background-color: #efefef;
+      border: 1px solid #000;
+      padding: 10px;
+      margin-left: 10px;
+      float: left;
+    }
+  </style>
+  <title>Content Distribution With Slot</title>
+</head>
+<body>
+  <div id="app">
+    <information>
+      <h4>Hati-Hati Jalanan Licin</h4>
+    </information>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/vue@2.6.10/dist/vue.js"></script>
+  <script>
+    Vue.component("information", {
+      data: function() {
+        return {
+          classCard: "card",
+        }
+      },
+      template:`
+        <div :class="classCard">
+          <h1>Information</h1>
+          <slot></slot>
+        </div>
+      `
+    })
+
+    const vm = new Vue({
+      el: "#app",
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Push And Pop</title>
+</head>
+<body>
+  <div id="app">
+    <ul>
+      <li v-for="book in books">{{ book }}</li>
+    </ul>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/vue@2.6.10/dist/vue.js"></script>
+  <script>
+    const vm = new Vue({
+      el: "#app",
+      data: {
+        books: [
+          'C++ High Performance',
+          'Mastering Linux Security and Hardening',
+          'Python Programming Blueprints',
+          'Mastering PostgreSQL 10',
+        ]
+      }
+    });
+    // Push & Pop
+    vm.books.push('HTML UNCOVER');
+    vm.books.pop();
+
+    // Shift & Unshift
+    vm.books.unshift('CSS UNCOVER');
+    vm.books.shift();
+
+    // Sort & Reverse
+    vm.books.sort();
+    // vm.books.reverse();
+
+    // Splice
+    vm.books.splice(10, 0, "PHP UNCOVER"); // Add Data
+    vm.books.splice(2, 1); // Delete Data
+    vm.books.splice(0, 1, "Mastering Hacking");
+
+    // Filter
+    // vm.books = vm.books.filter((book) => {
+    //   return book[0] === "M"
+    // });
+  </script>
+</body>
+</html>

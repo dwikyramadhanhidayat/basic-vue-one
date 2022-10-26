@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    .card {
+      width: 200px;
+      background-color: #efefef;
+      border: 1px solid #000;
+      padding: 10px;
+      margin-left: 10px;
+      float: left;
+    }
+    h3 {
+      min-height: 45px;
+    }
+  </style>
+  <title>Send Data to Component (Props)</title>
+</head>
+<body>
+  <div id="app">
+    <book title="C++ High Performance" description="Write code that scales across CPU registers, multicore, and machine clusters"
+    image="pizza.jpg"
+    >
+
+    </book> 
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/vue@2.6.10/dist/vue.js"></script>
+  <script>
+    let BookComponent = {
+      data () {
+        return {
+          classCard: "card",
+        }
+      },
+      props: ["title", "description", "image"],
+      template: `
+        <div :class="classCard">
+          <h3>{{ title }}</h3>
+          <img :src="'img/' + image" style="width: 100%" />
+          <p v-html="description"></p>  
+        </div>
+      `
+    }
+
+    const vm = new Vue({
+      el: "#app",
+      components: {
+        "book": BookComponent,
+      }
+    });
+  </script>
+</body>
+</html>

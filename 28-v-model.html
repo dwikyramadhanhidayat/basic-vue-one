@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>V-Model</title>
+</head>
+<body>
+  <div id="app">
+    <form action="">
+      <div>
+        <input type="text" name="title" v-model="title" placeholder="Insert Title">{{ title }}
+      </div>
+      <div>
+        <textarea name="description" id="description" cols="30" rows="10" v-model="description" placeholder="Input Description"></textarea>
+        {{ description }}
+      </div>
+      
+      <!-- Text -->
+      <div>
+        <input type="number" name="price" v-model.price="price" placeholder="Input Price">
+      </div>
+      <div>
+        <input type="text" name="subtitle" v-model.trim="subtitle" placeholder="Input Subtitle">
+      </div>
+
+      <!-- Radio type text -->
+      <div>
+        <p>Paket</p>
+        <label for="bookA">Laravel Book</label>
+        <input type="radio" name="bookA" id="bookA" value="A" v-model="package">
+        <label for="bookB">Vue Book</label>
+        <input type="radio" name="bookB" id="bookB" value="B" v-model="package">
+        <label for="bookC">React Book</label>
+        <input type="radio" name="bookC" id="bookC" value="C" v-model="package">
+        <br>
+        <span>Package: {{ package }}</span>
+      </div>
+
+      <!-- Select type text -->
+      <div>
+        <select name="category" v-model="category">
+          <option value="" disabled>Please select one</option>
+          <option value="01">Graphics Programming</option>
+          <option value="02">Mobile Application Development</option>
+          <option value="03">Virtual and Augmented Reality</option>
+        </select>
+        <span>Category: {{ category }}</span>
+      </div>
+
+      <!-- Boolean -->
+      <div> 
+        <p>Gender</p>
+        <input type="checkbox" name="gender" id="gender" v-model="gender">
+        <label for="gender">{{ gender }}</label>
+      </div>
+      <div>
+        <select name="gender_two" v-model="gender_two">
+          <option value="false">Wanita</option>
+          <option value="true">Pria</option>
+        </select>
+        <span>Selected: {{ gender_two }}</span>
+      </div>
+
+      <!-- Array -->
+      <div>
+        <p>Hoby</p>
+        <input type="checkbox" name="hobby1" id="hobby1" value="watch" v-model="hobbies">
+        <label for="hobby1">Watch</label>
+        <input type="checkbox" name="hobby2" id="hobby2" value="walk" v-model="hobbies">
+        <label for="hobby2">Walk</label>
+        <input type="checkbox" name="hobby3" id="hobby3" value="eat" v-model="hobbies">
+        <label for="hobby3">Eat</label>
+        <br>
+        <span>Hobby Choice: {{ hobbies }}</span>
+      </div>
+
+      <div>
+        <p>Categories</p>
+        <select name="categories" multiple v-model="categories">
+          <option value="01">Graphics Programming</option>
+          <option value="02">Mobile Application Development</option>
+          <option value="03">Virtual and Augmented Reality</option>
+        </select>
+        <span>Selected: {{ categories }}</span>
+      </div>
+
+      <div>
+        <p>Categories Two</p>
+        <select name="categories_two" v-model="categories_two" multiple>
+          <option v-for="option in options" :value="option.value">{{ option.text }}</option>
+        </select>
+        <span>Selected: {{ categories_two }}</span>
+      </div>
+    </form>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/vue@2.6.10/dist/vue.js"></script>
+  <script>
+    const vm = new Vue({
+      el: "#app",
+      data: {
+        title: "",
+        description: "",
+        price: 0,
+        subtitle: "",
+        package: "",
+        category: "",
+        gender: true,
+        gender_two: true,
+        hobbies: [],
+        categories: [],
+        categories_two: [],
+        options: [
+        { text: 'Graphics Programming', value: '01' },
+        { text: 'Mobile Application Development', value: '02' },
+        { text: 'Virtual and Augmented Reality', value: '03' }
+        ]
+      }
+    })
+  </script>
+</body>
+</html>

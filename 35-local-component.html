@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Local Component</title>
+</head>
+<body>
+  <div id="app">
+    <component-a></component-a>
+    <component-b></component-b>
+    <component-c></component-c>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/vue@2.6.10/dist/vue.js"></script>
+  <script>
+    let ComponentA = {
+      template: `<h1>Component A</h1>`
+    }
+    let ComponentB = {
+      template: `<h1>Component B</h1>`
+    }
+    
+    let ComponentC = {
+      template: `<h1>Component C</h1>`
+    }
+
+    const vm = new Vue({
+      el: "#app",
+      components: {
+        'component-a': ComponentA,
+        'component-b': ComponentB,
+        'component-c': ComponentC,
+      },
+      data: {
+
+      }
+    });
+  </script>
+</body>
+</html>

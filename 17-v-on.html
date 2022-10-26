@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>V-On</title>
+</head>
+<body>
+  <div id="app">
+    <button v-on:click="info('Hallo Indonesia')">Informasi</button>
+
+    <h1>Counter</h1>
+    <h2>{{ counter }}</h2>
+    <button @click="increment">+</button>
+    <button v-on:click="increment">+</button>
+    <button onclick="vm.increment()">+</button>
+    <hr>
+
+    <a href="https://google.com" @click="link($event)">Google</a>
+    <a href="https://google.com" @click.prevent="info('Go to link')">Google</a>
+    <hr>
+    
+    <!-- Ketika ditekan enter maka akan menjalankan fungsi submit -->
+    <input type="text" v-on:keyup.enter="info('Terima kasih ' + $event.target.value)">
+    <!-- Shift + Click -->
+    <button v-on:click.ctrl="info('Hallo')">
+      CTRL + CLICK
+    </button>
+
+    <!-- object syntax (2.4.0+) -->
+    <!-- <button v-on="{ mousedown: doThis, mouseup: doThat }"></button> -->
+    <!-- chain modifiers -->
+    <!-- <button v-on:click.stop.prevent="doThis"></button> -->
+    <hr>
+
+    <!-- Exac -->
+    <button @click.ctrl="info('Default')">Default</button>
+    <button @click.ctrl.exact="info('Exac')">Exac</button>
+    <hr>
+
+    <!-- Modifier Mouse Button -->
+    <button @click.right="info('Click Kanan')">Right</button>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/vue@2.6.10/dist/vue.js"></script>
+  <script>
+    const vm = new Vue({
+      el: "#app",
+      data: {
+        counter: 0,
+      },
+      methods: {
+          info: function(data) {
+            window.alert(data)
+          },
+          increment: function() {
+            this.counter++;
+          },
+          link: function(event) {
+            alert('Go to Link');
+            event.preventDefault();
+          }
+      }
+      });
+  </script>
+</body>
+</html>

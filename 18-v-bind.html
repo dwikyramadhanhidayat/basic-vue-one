@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>V-Bind</title>
+</head>
+<body>
+  <div id="app">
+    <img :src="'img/' + imageSource" alt="" style="width: 200px; height: 100px">
+  </div>
+
+  <!-- <div v-bind:class="[classA, classB]"></div> -->
+
+  <!-- <div v-bind:class="{ red: isRed }"></div>
+  <div v-bind:style="{ fontSize: size + 'px' }"></div> -->
+
+  <!-- <img v-bind="{ id: imageID, src: imageSrc }" /> -->
+
+  <!-- Dynamic Argument -->
+  <a v-bind:[nama_atribut]="url"> ... </a>
+  <a :[nama_atribut]="url"> ... </a>
+  <script src="https://cdn.jsdelivr.net/npm/vue@2.6.10/dist/vue.js"></script>
+  <a v-on:[nama_event]="info('hallo')"> ... </a>
+  <script>
+    const vm = new Vue({
+      el: "#app",
+      data: {
+        imageSource: "sky.jpg",
+        size: 100,
+      }
+    });
+
+    setTimeout(() => {
+      vm.imageSource = "pizza.jpg";
+    }, 3000);
+  </script>
+</body>
+</html>

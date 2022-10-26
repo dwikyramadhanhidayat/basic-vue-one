@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Siklus Object Vue</title>
+</head>
+<body>
+  <div id="app">
+    <h1>{{ message }}</h1>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/vue@2.6.10/dist/vue.js"></script>
+  <script>
+    const vm = new Vue({
+      el: "#app",
+      data: {
+        message: "Hello World",
+      },
+      // Created
+      // beforeCreate: function() {
+      //   console.info("Before create = " + "message = " + this.message);
+      // },
+      // created: function() {
+      //   console.info("Message = " + this.message);
+      //   console.info(this.$data)
+      // },
+
+      // Mounted
+        // beforeMount: function() {
+        //   console.info("Before Mount = " + "el = " +this.$el.textContent);
+        // }, 
+        // mounted: function() {
+        //   console.info("Mounted =  " + "el = " + this.$el.textContent);
+        // },
+
+      //   Updated
+      //   beforeUpdate: function() {
+      //     console.info("Before Update = " + "el = " + this.$el.textContent);
+      //   },
+      //   updated: function() {
+      //     console.info("Updated = " + "el = " + this.$el.textContent);
+      //   },
+
+      //  Destroy
+      beforeDestroy: function() {
+        console.info("Before Destroy");
+      },
+      destroyed: function() {
+        console.info("Destroyed");
+      }
+    });
+    // Updated
+    // vm.message = "Selamat Datang Dwiky";
+
+    // Watch
+    // Watch = sama dengan update
+    // vm.$watch("message", function(newValue, oldValue) {
+    //   console.info("Var message diubah dari " +oldValue + " menjadi " + newValue );
+    // });
+    // vm.message = "Selamat Datang Dwiky";
+
+    // Destroyed
+    vm.$destroy();
+  </script>
+</body>
+</html>

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Global Component</title>
+</head>
+<body>
+  <div id="app">
+    <h1>Object Vue One</h1><hr>
+    <component-a></component-a>
+    <component-b></component-b>
+  </div>
+  <div id="app_two">
+    <h1>Object Vue Two</h1><hr>
+    <component-a></component-a>
+    <component-b></component-b>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/vue@2.6.10/dist/vue.js"></script>
+  <script>
+    Vue.component("component-a", {
+      data: function() {
+        return {
+          message: "Component A",
+        }
+      },
+      template: `<h1>Component A</h1>`,
+    });
+
+    Vue.component("component-b", {
+      data: function() {
+        return {
+          message: "Component B",
+        }
+      },
+      template: `<h1>Component B</h1>`,
+    });
+
+    new Vue({el: "#app"})
+    new Vue({el: "#app_two"})
+  </script>
+</body>
+</html>

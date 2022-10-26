@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>V-If</title>
+</head>
+<body>
+  <div id="app">
+    <template v-if="content">
+      <h1>Title</h1>
+      <p>Paragraph 1</p>
+      <p>Paragraph 2</p>
+    </template>
+    <h1 v-else="content">{{ renderTitle }} (Template)</h1>
+
+    <div v-if="content">
+      <h1>Title</h1>
+      <p>Paragraph 1</p>
+      <p>Paragraph 2</p>
+    </div>
+    <h1 v-else="content">{{ renderTitle }} (Div)</h1>
+
+    <div v-if="value === 'A'">
+      Sempurna
+    </div>
+    <div v-else-if="value === 'B'">
+      Bagus
+    </div>
+    <div v-else-if="value === 'C'">
+      Cukup
+    </div>
+    <div v-else>
+      Kurang
+    </div>
+    
+
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/vue@2.6.10/dist/vue.js"></script>
+  <script>
+    const vm = new Vue({
+      el: "#app",
+      data: {
+        content: false,
+        renderTitle: "Data not found",
+        value: "B",
+      }
+    });
+  </script>
+</body>
+</html>

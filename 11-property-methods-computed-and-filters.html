@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Methods, Computed, And Filters</title>
+</head>
+<body>
+  <div id="app">
+    <h1>Methods: {{ upper(message) }}</h1>
+    <h1>Computed: {{ messageUpperCase }}</h1>
+    <h1>Filters: {{ message | upper }}</h1>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/vue@2.6.10/dist/vue.js"></script>
+  <script>
+    const vm = new Vue({
+      el: "#app",
+      data: {
+        message: "Hello World",
+      },
+      methods: {
+        upper: function(text) {
+          return text.toUpperCase();
+        }
+      },
+      computed: {
+        messageUpperCase: function() {
+          return this.message.toUpperCase();
+        }
+      },
+      filters: {
+        upper: function(text) {
+          return text.toUpperCase();
+        }
+      },
+    });
+  </script>
+</body>
+</html>

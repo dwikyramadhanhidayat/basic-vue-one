@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>State Management</title>
+</head>
+<body>
+  <div id="app">
+
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/vue@2.6.10/dist/vue.js"></script>
+  <script src="https://unpkg.com/vuex@3.1.1/dist/vuex.js"></script>
+  <script type="module">
+    import {Hello} from "./Hello.js";
+    const store = new Vuex.Store({
+      // strict: true,
+      state: {
+        counter: 0,
+      },
+      mutations: {
+        increment(state) {
+          state.counter++;
+        }
+      },
+      actions: {
+        increment(context){
+        context.commit('increment')
+      }
+      // atau
+      /*
+      increment: (context) => {
+      context.commit('increment')
+      }
+      atau
+      increment: ({commit}) => {
+      commit('increment')
+      }
+      */
+      },
+    })
+
+    new Vue({
+      el: "#app",
+      store, // tambahkan ini atau store: store
+      components: {
+        "hello" : Hello,
+      },
+      // local state as computed
+      computed: {
+        counter() {
+          return store.state.counter;
+          // return this.$store.state.counter;
+        }
+      },
+      // view
+      template:`
+        <div>
+          {{ counter }}
+          <button @click="increment()">+</button>
+          <hello></hello>
+        </div>
+      `,
+      // actions
+      methods: {
+        increment() {
+          //store.commit('increment')
+          // store.state.counter++;
+          store.dispatch('increment')
+        }
+      }, 
+    })
+  </script>
+</body>
+</html>

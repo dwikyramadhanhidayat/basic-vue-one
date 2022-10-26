@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Mixins</title>
+  </head>
+  <body>
+    <div id="app"></div>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.10/dist/vue.js"></script>
+    <script>
+      // Mixin Global
+      // Vue.mixin({
+      //   created: function () {
+      //     let text = this.$options.text;
+      //     if (text) {
+      //       console.log(text);
+      //     }
+      //   },
+      // });
+      // new Vue({
+      //   text: "hello!",
+      // });
+
+      let MixHello = {
+        created: function () {
+          this.hello();
+        },
+
+        methods: {
+          hello: function () {
+            console.info("Hello Mixin!");
+          },
+        },
+      };
+
+      const vm = new Vue({
+        el: "#app",
+        mixins: [MixHello],
+      });
+    </script>
+  </body>
+</html>

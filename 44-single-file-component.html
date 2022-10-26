@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    .card {
+      width: 200px;
+      background-color: #efefef;
+      border: 1px solid #000;
+      padding: 10px;
+      margin-left: 10px;
+      float: left;
+    }
+    h3 {
+      min-height: 45px;
+    }
+    img {
+      height: 150px;
+    }
+  </style>
+  <title>Single File Component</title>
+</head>
+<body>
+  <div id="app">
+    <h1>Selected: {{ selectedBook }}</h1>
+    <book v-for="book in books" 
+    :key="book.id"
+    :book="book"
+    @selected="selectedBook = $event"
+    >
+    </book>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/vue@2.6.10/dist/vue.js"></script>
+  <script type="module">
+    import {BookComponent} from "./BookComponent.js";
+    const vm = new Vue({
+      el: "#app",
+      components: {
+        "book": BookComponent,
+      },
+      data: {
+        selectedBook: "",
+        books: [
+          {
+            id: 99,
+            title: 'C++ High Performance',
+            description: 'Write code that scales across CPU registers, multi-core, and machine clusters',
+            authors: 'Viktor Sehr, Björn Andrist',
+            publish_year: 2018,
+            price: 100000,
+            image: 'nature.jpg',
+          },
+          {
+            id: 100,
+            title: 'Mastering Linux Security and Hardening',
+            description: 'A comprehensive guide to mastering the art of preventing your Linux system from getting compromised',
+            authors: 'Donald A. Tevault',
+            publish_year: 2018,
+            price: 125000,
+            image: 'pizza.jpg',
+          },
+          {
+            id: 101,
+            title: 'Mastering PostgreSQL 10',
+            description: 'Master the capabilities of PostgreSQL 10 to efficiently manage and maintain your database',
+            authors: 'Hans-Jürgen Schönig',
+            publish_year: 2016,
+            price: 90000,
+            image: 'realme-8.jpg',
+          },
+          {
+            id: 102,
+            title: 'Python Programming Blueprints',
+            description: 'How to build useful, real-world applications in the Python programming language',
+            authors: 'Daniel Furtado, Marcus Pennington',
+            publish_year: 2017,
+            price: 75000,
+            image: 'sky.jpg',
+          }
+        ]
+      }
+    });
+  </script>
+</body>
+</html>

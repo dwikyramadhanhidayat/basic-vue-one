@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Show Data</title>
+</head>
+
+<body>
+  <div id="app">
+    <ul>
+      <li v-for="book in books">{{ book }}</li>
+    </ul>
+
+    <!-- Menggunakan template -->
+    <ul>
+      <template>
+        <li v-for="book in books">{{ book }}</li>
+      </template>
+    </ul>
+
+    <!-- Menggunakan index -->
+    <ul style="list-style-type: none">
+      <li v-for="(book, index) in books">{{ index+1 }} {{ book }}</li>
+    </ul>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/vue@2.6.10/dist/vue.js"></script>
+  <script>
+    const vm = new Vue({
+      el: "#app",
+      data: {
+          books: [
+          'C++ High Performance',
+          'Mastering Linux Security and Hardening', 'Python Programming Blueprints',
+          'Mastering PostgreSQL 10',
+        ]
+      }
+    });
+  </script>
+</body>
+
+</html>

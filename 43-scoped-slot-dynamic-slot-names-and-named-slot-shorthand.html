@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    .card {
+      width: 200px;
+      background-color: #efefef;
+      border: 1px solid #000;
+      padding: 10px;
+      margin-left: 10px;
+      float: left;
+    }
+  </style>
+  <title>Scoped Slot, Dynamic Slot Names, and Slot Shorthand</title>
+</head>
+<body>
+  <div id="app">
+    <alert>
+      <template v-slot:default="slotData">
+        <h1>{{ slotData.defaultAlert }}</h1>
+      </template>
+    </alert>
+
+    <!-- Dynamic Slot Names-->
+    <alert>
+      <template v-slot:[dynamicSlotName]>
+      ...
+      </template>
+    </alert>
+
+    <!-- Named Slot Shorthand -->
+    <alert>
+      <template #default="slotData">
+        <h1>{{ slotData.defaultAlert }}<h1>
+      </template>
+    </alert>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/vue@2.6.10/dist/vue.js"></script>
+  <script>
+    Vue.component("alert", {
+      data: function() {
+        return {
+          classCard: "card",
+          defaultAlert: "Careful, Danger",
+        }
+      },
+      template:`
+        <div :class="classCard">
+          <slot :defaultAlert="defaultAlert">{{ defaultAlert }}</slot>
+        </div>
+      `
+    })
+
+    const vm = new Vue({
+      el: "#app",
+    });
+  </script>
+</body>
+</html>
